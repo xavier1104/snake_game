@@ -1,4 +1,5 @@
 #include <stdafx.h>
+#include "SDLApp.h"
 
 void DrawBoard(SDL_Renderer* renderer)
 {
@@ -34,69 +35,13 @@ void DrawGameName(SDL_Renderer* renderer)
 
 int main(int argc, char* argv[])
 {
-	SDL_Window* window = nullptr;
-	SDL_Renderer* renderer = nullptr;
-	TTF_Font* font = TTF_OpenFont("corbel.ttf", 32);
+	SDLApp app;
 	
-	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-		cout << SDL_GetError() << '\n';
-		SDL_Quit();
-	}
-	
-	SDL_CreateWindowAndRenderer(640, 480, 0, &window, &renderer);
-	if (SDL_RenderSetScale(renderer, 1, 1) < 0) {
-		cout << SDL_GetError() << '\n';
-		SDL_Quit();
-	}
-	
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-	SDL_RenderClear(renderer);
-	
-	if (TTF_Init() == -1) {
-		cout << TTF_GetError() << '\n';
-	}
+	app.Init();
 
-	TTF_Font* font = TTF_OpenFont("corbel.ttf", 32);
-	if (!font) {
-		cout << "load font failed\n";
-		exit(1);
-	}
-	
-	while (1) {
-		SDL_Event e;
-		while (SDL_PollEvent(&e)) {
-			if (e.key.repeat != 0) {
-				continue;
-			}
+	app.Play();
 
-			switch (e.type) {
-			case SDL_KEYDOWN:
-			{
-				cout << "Key press detected\n";
-				break;
-			}
-			case SDL_KEYUP:
-			{
-				cout << "Key released detected\n";
-				break;
-			}
-			}
-		}
+	app.Finish();
 
-		SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
-		SDL_RenderClear(renderer);
-
-		DrawScore(renderer, 100);
-		DrawBoard(renderer);
-
-		SDL_RenderPresent(renderer);
-	}
-
-	SDL_DestroyTexture(scoreTxt);
-	SDL_DestroyTexture(gameNameTxt);
-	SDL_DestroyWindow(window);
-	TTF_CloseFont(font);
-
-	SDL_Quit();
 	return 0;
 }
