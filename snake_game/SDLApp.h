@@ -13,8 +13,9 @@ public:
 
 private:
 	void DrawGame();
+	void DrawBound();
 	void DrawBoard();
-	void DrawScore(int score);
+	void DrawScore();
 	void DrawGameName();
 
 private:

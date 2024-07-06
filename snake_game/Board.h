@@ -9,6 +9,9 @@ public:
 	~Board();
 
 	void GenerateFood();
+	shared_ptr<Food> GetFood() { return food_; }
+	int GetWidth() { return width_; }
+	int GetHeight() { return height_; }
 
 private:
 	int width_;

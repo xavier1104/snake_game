@@ -1,8 +1,9 @@
 #include <stdafx.h>
+#include "Coordinate.h"
 #include "Body.h"
 
-Body::Body(shared_ptr<Coordinate> _coord)
-	:Part(_coord)
+Body::Body(shared_ptr<Coordinate> coord)
+	:Part(coord)
 {
 }
 
@@ -10,7 +11,7 @@ Body::~Body()
 {
 }
 
-void Body::Move(shared_ptr<Coordinate> _coord)
+void Body::Move(shared_ptr<Coordinate> coord)
 {
-	coord_ = _coord;
+	*coord_ = *coord;
 }

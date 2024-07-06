@@ -11,6 +11,11 @@ public:
 
 	bool IsRunning() { return isRunning_; }
 	void Update();
+	void Init();
+
+	shared_ptr<Snake> GetSnake() { return snake_; }
+	shared_ptr<Board> GetBoard() { return board_; }
+	shared_ptr<Player> GetPlayer() { return player_; }
 private:
 	bool isRunning_;
 	shared_ptr<Player> player_;

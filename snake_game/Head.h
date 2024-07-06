@@ -19,7 +19,7 @@ public:
 	~Head();
 
 	void Move(shared_ptr<Coordinate> _coord) override;
-
+	void SetDirection(Direction dir);
 private:
 	Direction dir_;
 };

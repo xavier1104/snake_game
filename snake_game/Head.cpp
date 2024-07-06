@@ -27,3 +27,24 @@ void Head::Move(shared_ptr<Coordinate> _coord)
 		coord_->x_ += 1;
 	}
 }
+
+void Head::SetDirection(Direction dir)
+{
+	if (dir_ == LEFT && dir == RIGHT) {
+		return;
+	}
+
+	if (dir_ == RIGHT && dir == LEFT) {
+		return;
+	}
+
+	if (dir_ == UP && dir == DOWN) {
+		return;
+	}
+
+	if (dir_ == DOWN && dir == UP) {
+		return;
+	}
+
+	dir_ = dir;
+}
