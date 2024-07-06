@@ -4,4 +4,5 @@ Snake Game use SDL2 for fun :)
 This is my OOA
 
 ![snake_gameplay](https://github.com/xavier1104/snake_game/assets/18095263/c998962f-cf84-401f-a9cd-f6a264df2b38)
+
 This is gameplay
